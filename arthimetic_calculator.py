@@ -19,8 +19,8 @@ def calculate(num1,num2,operator):
         return None
     
 first_number = float(input(""))    
-run ="x"
-while run == "x":
+
+while True:
     user_input=input("")
     if user_input == "q":
         break
