@@ -5,72 +5,33 @@ Created on Tue Dec 24 20:26:20 2019
 
 @author: jishanmsharif
 """
-    
-def calculate(num1,num2,operator):
+
+# The function calculate takes in two numbers and an operator and returns the result.
+# The operator is a string, the return type a number.
+def calculate(a, b, operator):
     if operator == "+":
-        return (num1 + num2)
+        return (a + b)
     elif operator == "-":
-        return (num1 - num2)
+        return (a - b)
     elif operator == "*":
-        return (num1 * num2)
+        return (a * b)
     elif operator == "/":
-        return (num1 / num2)
-    else:
-        return None
-    
-first_number = float(input(""))    
+        return (a / b)
 
+stack = []
 while True:
-    user_input=input("")
-    if user_input == "q":
-        break
-    second_number = float(user_input)
-    operator = input("")
-    first_number = calculate(first_number,second_number,operator)
-    print(first_number)
-
-
-# take a list
-#Create two variables based on the last elements
-# Perform operation on those two variables
-#LOOP!
-    
-#def calculate(num1,num2,operator):
-    #if operator == "+":
-        #return (num1 + num2)
-    #elif operator == "-":
-     #   return (num1 - num2)
-   # elif operator == "*":
-   #     return (num1 * num2)
-  #  elif operator == "/":
-   #     return (num1 / num2)
-  #  else:
-     #   return None
-    
-#first_number = input([])   
-
-#while True:
-  #  user_input=first_number.pop(-1)
-    #if user_input == "q":
-        #break
-    #second_number = first_number.pop(-2)
-    # first_number = calculate(first_number,second_number,operator)
-   # print(first_number)
-while True:  
-    initial_step = (input("Enter list here "))
-    variable_one = initial_step.pop(-1)
-    variable_two = initial_step.pop(-2)
-
-    new_operator = float(input("Enter Operator"))
-    if new_operator == "+":
-        print (variable_one + variable_two)
-    elif new_operator == "-":
-        print (variable_one - variable_two) 
-    elif new_operator == "*":
-        print (variable_one * variable_two)
-    elif new_operator == "/":
-        print(variable_one / variable_two)
+    data = input("Enter number/operator: ")
+    if (data == "+") or (data == "-") or (data == "*") or (data == "/"):
+        # data is an operator, so we remove the last two values from the list
+        # and perform the computation. The result is printed and saved for
+        # future use.
+        b = stack.pop()
+        a = stack.pop()
+        result = calculate(float(a), float(b), data)
+        stack.append(result)
+        print(result)
     else:
-        print("Nothing")
-    
+        # If data is not an operator, the value entered gets stored onto the
+        # list for future use.
+        stack.append(data)
 
